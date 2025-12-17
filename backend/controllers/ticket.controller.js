@@ -1,10 +1,6 @@
 import Ticket from "../models/ticketModel.js";
 
-/**
- * @desc    Create a new ticket
- * @route   POST /tickets
- * @access  Public (or Protected if login used)
- */
+
 const createTicket = async (req, res) => {
   try {
     const { title, description, status, priority, assignedTo } = req.body;
@@ -28,11 +24,7 @@ const createTicket = async (req, res) => {
   }
 };
 
-/**
- * @desc    Get all tickets
- * @route   GET /tickets
- * @access  Public (or Protected)
- */
+
 const getAllTickets = async (req, res) => {
   try {
     const tickets = await Ticket.find()
@@ -54,6 +46,7 @@ const getAllTickets = async (req, res) => {
 
 const getTechTickets = async (req, res) => {
   try {
+    
     const tickets = await Ticket.find({ assignedTo: req.user.id })
       .populate("createdBy", "name email role")
       .populate("assignedTo", "name email role")

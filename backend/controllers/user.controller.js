@@ -46,6 +46,7 @@ const handleregister=async(req,res)=>{
 
 //login controller 
  const handleLogin = async (req, res) => {
+  console.log("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
   
   try {
     const { email, password } = req.body;
@@ -70,8 +71,6 @@ const handleregister=async(req,res)=>{
     
     const token=setuser(user);
 
-
-      
       res.cookie("tokenid",token,{
           httpOnly: true,      // Secure against JS access (XSS)
           secure: false,       // ❌ false for localhost (set true in production HTTPS)
