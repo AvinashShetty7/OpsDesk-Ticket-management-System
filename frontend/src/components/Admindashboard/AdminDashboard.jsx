@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
+import Navbar from "../navbar/navbar";
 
 export default function AdminDashboard() {
   // const [activeTab, setActiveTab] = useState("register");
@@ -11,10 +12,13 @@ export default function AdminDashboard() {
   };
 
   return (
+    <>
+     <Navbar/>
     <div className="sideb">
     <Sidebar/>
     <Outlet/>
     </div>
+    </>
   );
 }
 

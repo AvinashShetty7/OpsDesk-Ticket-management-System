@@ -4,12 +4,15 @@ import MyTickets from "./MyTickets";
 import { Link } from "react-router-dom";
 import EmpSidebar from "./EmpSidebar";
 import { Outlet } from "react-router-dom";
+import Navbar from "../navbar/navbar";
 export default function EmployeeDashboard() {
-
   return (
-    <div  className="sideb">
-      <EmpSidebar/>
-      <Outlet/>
-    </div>
+    <>
+      <Navbar />
+      <div className="sideb">
+        <EmpSidebar />
+        <Outlet />
+      </div>
+    </>
   );
 }

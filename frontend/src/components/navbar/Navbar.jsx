@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Navbar({ user }) {
   const navigate = useNavigate();
   const [profilename, setprofilename] = useState("");
-  const [setLoading] = useState(false);
+  // const [setLoading] = useState(false);
 
   useEffect(() => {
     const checkValidUser = async () => {
@@ -19,7 +19,7 @@ export default function Navbar({ user }) {
       } catch (err) {
         console.error("Error:", err);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
     checkValidUser();
@@ -33,7 +33,7 @@ export default function Navbar({ user }) {
         { withCredentials: true }
       );
       console.log("Logout success");
-      navigate("");
+      navigate("/");
     } catch (err) {
       console.error("Logout failed", err);
     }
