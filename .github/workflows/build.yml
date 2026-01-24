@@ -3,7 +3,7 @@ name: Deploy MERN Backend to EC2
 on:
   push:
     branches:
-      - main   # deploy when code is pushed to main branch
+      - main # deploy when code is pushed to main branch
 
 jobs:
   deploy:
@@ -18,11 +18,36 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ubuntu/mern-backend   # path where your app lives
+            echo "Connected to EC2..."
 
+            # Go to your project root
+            cd /home/ubuntu/OpsDesk-Ticket-management-System
+
+            # Pull latest code
             git pull origin main
 
+            echo "Updating backend..."
+
+            # Backend
+            cd backend
             npm install
 
-            # Restart app using PM2
-            pm2 restart all || pm2 start index.js --name "mern-backend"
+            # Restart backend using PM2 (use your real entry file name)
+            pm2 restart server.js
+
+            echo "Updating frontend..."
+
+            # Frontend
+            cd ../frontend
+            npm install
+            rm -r build
+            npm run build
+
+            # Copy React build to Nginx folder
+            sudo rm -rf /var/www/html/*
+            sudo cp -r build/* /var/www/html/
+
+            # Reload Nginx
+            sudo systemctl reload nginx
+
+            echo "Deployment completed successfully 🚀"
