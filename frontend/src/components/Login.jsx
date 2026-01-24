@@ -84,7 +84,7 @@ export default function Login() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 via-red-50 to-slate-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 flex items-center justify-center px-4">
         <div className="text-center">
           <div className="flex justify-center mb-6">
             <div className="relative w-12 h-12 sm:w-16 sm:h-16">
@@ -117,7 +117,7 @@ export default function Login() {
               <span className="text-3xl sm:text-4xl">🔐</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black bg-gradient-to-r from-blue-700 to-slate-700 bg-clip-text text-transparent mb-2">
-              Welcome Back
+              Welcome Back to opsdesk
             </h2>
             <p className="text-slate-600 text-sm sm:text-base">Sign in to your account to continue</p>
           </div>
