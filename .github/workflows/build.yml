@@ -40,12 +40,12 @@ jobs:
             # Frontend
             cd ../frontend
             npm install
-            rm -r build
+            
             npm run build
 
             # Copy React build to Nginx folder
             sudo rm -rf /var/www/html/*
-            sudo cp -r build/* /var/www/html/
+            sudo cp -r dist/* /var/www/html/
 
             # Reload Nginx
             sudo systemctl reload nginx
